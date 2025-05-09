@@ -9,6 +9,7 @@ $query = "
     SELECT p.*, i.file_name AS image 
     FROM products p 
     LEFT JOIN images i ON p.image_id = i.id 
+    WHERE p.status = 'approved' 
     ORDER BY p.created_at DESC 
     LIMIT 5
 ";

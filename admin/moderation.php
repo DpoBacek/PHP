@@ -62,7 +62,7 @@ $result = $mysqli->query("SELECT * FROM products WHERE status = 'on confirmation
                              loading="lazy"
                              width="100%"
                              height="300px"
-                             onerror="this.onerror=null; this.src='cart/DefaultPicture.png';">
+                             onerror="this.onerror=null; this.src='../cart/DefaultPicture.png';">
                         <h2><?= htmlspecialchars($row['title']) ?></h2>
                         <div class="price">Цена: <?= number_format($row['price'], 2) ?> ₽</div>
                         <div class="quantity">Количество: <?= htmlspecialchars($row['quantity']) ?></div>
