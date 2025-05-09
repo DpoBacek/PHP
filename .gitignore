@@ -1,0 +1,37 @@
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Конфигурационные файлы
+.env
+
+# Логи и отладочные файлы
+*.log
+debug.log
+error_log
+
+# Кэш и временные файлы
+cache/
+tmp/
+*.tmp
+
+# Загрузки и пользовательские файлы
+images/
+
+# Файлы IDE
+.vscode/
+.idea/
+
+# Системные файлы ОС
+*.swp
+*.swo
+
+# Node.js (если используется)
+node_modules/
+npm-debug.log*
+
+# Composer (если используется)
+vendor/
+
+# PHPStorm
+*.iml
