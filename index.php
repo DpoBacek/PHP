@@ -43,7 +43,8 @@ try {
                      alt="<?= htmlspecialchars($row['title']) ?>"
                      loading="lazy"
                      width="100%"
-                     height="300px">
+                     height="300px"
+                     onerror="this.onerror=null; this.src='cart/DefaultPicture.png';">
                 <h2><?= htmlspecialchars($row['title']) ?></h2>
                 <div class="price"><?= number_format($row['price'], 2) ?> ₽</div>
                 <div class="quantity">Количество: <?= htmlspecialchars($row['quantity']) ?></div>

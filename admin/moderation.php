@@ -55,13 +55,14 @@ $result = $mysqli->query("SELECT * FROM products WHERE status = 'on confirmation
                     <article class="product-card">
                         <?php
                         $image_result = $mysqli->query("SELECT file_name FROM images WHERE id = '{$row['image_id']}'");
-                        $image_file = $image_result && $image_result->num_rows > 0 ? $image_result->fetch_assoc()['file_name'] : 'default.jpg';
+                        $image_file = $image_result && $image_result->num_rows > 0 ? $image_result->fetch_assoc()['file_name'] : 'cart/DefaultPicture.png';
                         ?>
                         <img src="../images/<?= htmlspecialchars($image_file) ?>" 
                              alt="<?= htmlspecialchars($row['title']) ?>"
                              loading="lazy"
                              width="100%"
-                             height="300px">
+                             height="300px"
+                             onerror="this.onerror=null; this.src='cart/DefaultPicture.png';">
                         <h2><?= htmlspecialchars($row['title']) ?></h2>
                         <div class="price">Цена: <?= number_format($row['price'], 2) ?> ₽</div>
                         <div class="quantity">Количество: <?= htmlspecialchars($row['quantity']) ?></div>

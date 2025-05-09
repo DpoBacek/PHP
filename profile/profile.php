@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -114,8 +114,8 @@ $mysqli->close();
         </table>
 
         <p>
-            <a class="btn" href='index.php'>Вернуться на главную</a>
-            <a class="btn btn-d" href="logout.php">Выйти</a>
+            <a class="btn" href='../index.php'>Вернуться на главную</a>
+            <a class="btn btn-d" href="../auth/logout.php">Выйти</a>
         </p>
     </div>
 </body>

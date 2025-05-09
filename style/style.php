@@ -113,7 +113,7 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
-    margin-top: 20px;
+    width: 100%;
 }
 
 article {
@@ -184,7 +184,7 @@ footer {
 }
 
 /* Forms */
-input, textarea, button {
+input, textarea {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -561,6 +561,15 @@ input[type="email"] {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.product-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Обрезка изображения для заполнения области */
+    border-radius: 8px;
 }
 
 .product-card:hover {
@@ -601,5 +610,50 @@ input[type="email"] {
     margin: 0;
     color: #fff;
 }
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+}
 
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 100%; 
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
 </style>

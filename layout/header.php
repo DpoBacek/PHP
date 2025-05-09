@@ -33,7 +33,7 @@ $base_url = $base_url ?? '/';
             <ul class="nav-list">
                 <li><a href="<?= $base_url ?>index.php">Главная</a></li>
                 <li><a href="<?= $base_url ?>addProduct.php">Добавить товар</a></li>
-                <li><a href="<?= $base_url ?>aboutus.php">О нас</a></li>
+                <li><a href="<?= $base_url ?>aboutUs.php">О нас</a></li>
                 <li><a href="<?= $base_url ?>address.php">Контакты</a></li>
                 
                 <?php if (isset($_SESSION['user'])): ?>
