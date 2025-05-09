@@ -44,11 +44,19 @@ $base_url = $base_url ?? '/';
                                 <li><a href="<?= $base_url ?>admin/addCategory.php">Управление категориями</a></li>
                                 <li><a href="<?= $base_url ?>admin/usersList.php">Список пользователей</a></li>
                                 <li><a href="<?= $base_url ?>admin/moderation.php">Модерация товаров</a></li>
+                                <li><a href="<?= $base_url ?>admin/orders.php">Управление заказами</a></li>
                             </ul>
                         </li>
                     <?php else: ?>
-                        <li><a href="<?= $base_url ?>profile.php">Мой профиль</a></li>
-                    <?php endif; ?>
+                        <?php endif; ?>
+                        <li class="dropdown">
+                            <a href="#">Профиль ▾</a>
+                            <ul class="dropdown-menu" style="list-style: none; padding: 0; margin: 0;">
+                                <li><a href="<?= $base_url ?>profile/profile.php">Мой профиль</a></li>
+                                <li><a href="<?= $base_url ?>profile/orderHistory.php">История заказов</a></li>
+                            </ul>
+                        </li>
+
                     <li><a href="<?= $base_url ?>auth/logout.php">Выйти</a></li>
                 <?php else: ?>
                     <li><a href="<?= $base_url ?>auth/login.php">Вход</a></li>

@@ -53,6 +53,26 @@ $mysqli->query("CREATE TABLE IF NOT EXISTS users (
     role ENUM('admin', 'user') NOT NULL DEFAULT 'user'
 )");
 
+// Создание таблицы orders
+$mysqli->query("CREATE TABLE IF NOT EXISTS orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    address TEXT NOT NULL,
+    order_date DATETIME NOT NULL,
+    status ENUM('В обработке', 'Выполнено', 'Отменено') NOT NULL DEFAULT 'В обработке',
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)");
+
+// Создание таблицы order_details
+$mysqli->query("CREATE TABLE IF NOT EXISTS order_details (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+)");
+
 // Заполнение таблицы categories
 $mysqli->query("INSERT IGNORE INTO categories (id, name) VALUES 
     (1, 'Электроника'),
