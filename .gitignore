@@ -16,7 +16,7 @@ tmp/
 *.tmp
 
 # Загрузки и пользовательские файлы
-images/
+images/*
 
 # Файлы IDE
 .vscode/
