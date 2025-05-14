@@ -4,7 +4,6 @@ require_once 'layout/config.php';
 $page_title = "О нас";
 require_once 'layout/header.php';
 
-// Получаем 5 последних товаров
 $query = "
     SELECT p.*, i.file_name AS image 
     FROM products p 
