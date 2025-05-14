@@ -10,18 +10,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $image_update = '';
     if (!empty($_FILES["image"]["name"])) {
-        $target_dir = "images/";
+        $target_dir = "../images/";
         $target_file = $target_dir . basename($_FILES["image"]["name"]);
         move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
-        $image_update = ", image = '$target_file'";
-    }
+        $stmt = $mysqli->prepare("INSERT INTO images (file_name) VALUES (?)");
+        $stmt->bind_param("s", $file_name);
+        $stmt->execute();
+        $new_image_id = $stmt->insert_id;
+        $stmt->close();
 
-    $sql = "UPDATE products SET 
+        $image_update = ", image_id = $new_image_id";
+    }   
+
+    $sql = "UPDATE products 
+        SET 
             title = '$title', 
             description = '$description', 
             price = $price 
             $image_update 
-            WHERE id = $id";
+        WHERE id = $id";
 
     if ($mysqli->query($sql)) {
         header("Location: index.php");
