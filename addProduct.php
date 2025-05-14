@@ -3,14 +3,12 @@ require_once 'layout/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        // Валидация данных
         $title = $mysqli->real_escape_string($_POST['title']);
         $description = $mysqli->real_escape_string($_POST['description']);
         $price = (float)$_POST['price'];
         $quantity = (int)$_POST['quantity'];
         $category_id = (int)$_POST['category_id'];
 
-        // Проверка категории
         $stmt = $mysqli->prepare("SELECT id FROM categories WHERE id = ?");
         $stmt->bind_param("i", $category_id);
         $stmt->execute();
@@ -19,9 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("Неверная категория");
         }
 
-        // Обработка изображения
         $target_dir = "images/";
-        // Генерация уникального имени файла
         $file_extension = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
         $file_name = uniqid() . '.' . $file_extension;
         $target_file = $target_dir . $file_name;
@@ -38,14 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("Ошибка загрузки изображения");
         }
 
-        // Сохранение изображения в базе данных
         $stmt = $mysqli->prepare("INSERT INTO images (file_name) VALUES (?)");
         $stmt->bind_param("s", $file_name);
         $stmt->execute();
         $image_id = $stmt->insert_id;
         $stmt->close();
 
-        // Использование image_id в отдельном запросе для добавления товара
         $stmt = $mysqli->prepare("INSERT INTO products 
             (title, description, price, quantity, category_id, image_id, status) 
             VALUES (?, ?, ?, ?, ?, ?, 'on confirmation')");
@@ -70,7 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Получение списка категорий
 $categories = $mysqli->query("SELECT * FROM categories ORDER BY name");
 ?>
 
