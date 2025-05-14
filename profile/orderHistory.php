@@ -4,16 +4,13 @@ require_once '../layout/config.php';
 $page_title = "История заказов";
 require_once '../layout/header.php';
 
-// Проверяем, авторизован ли пользователь
 if (!isset($_SESSION['user'])) {
     header('Location: ../auth/login.php');
     exit();
 }
 
-// Получаем ID текущего пользователя
 $user_id = $_SESSION['user']['id'];
 
-// Получаем список заказов текущего пользователя с деталями товаров
 $query = "
     SELECT o.id AS order_id, o.address, o.order_date, o.status, 
            od.quantity, p.price, i.file_name AS image
@@ -52,7 +49,7 @@ $result = $mysqli->query($query);
                         <td><?= htmlspecialchars($order['status']) ?></td>
                         <td>
                             <?php if ($order['image']): ?>
-                                <img src="../images/<?= htmlspecialchars($order['image']) ?>" alt="Товар" style="width: 100%; height: 100px; object-fit: cover;">
+                                <img src="../images/<?= htmlspecialchars($order['image']) ?>" alt="Товар" style="width: 100%; height: 100px;"  onerror="this.onerror=null; this.src='../cart/DefaultPicture.png';">
                             <?php else: ?>
                                 <span>Без изображения</span>
                             <?php endif; ?>

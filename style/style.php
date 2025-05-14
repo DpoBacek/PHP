@@ -613,7 +613,7 @@ input[type="email"] {
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     overflow: hidden;
 }

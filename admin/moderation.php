@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
-$result = $mysqli->query("SELECT * FROM products WHERE status = 'on confirmation'");
+$result = $mysqli->query("SELECT * FROM products WHERE status = 'on confirmation' ORDER BY created_at DESC");
 ?>
 
 <!DOCTYPE html>

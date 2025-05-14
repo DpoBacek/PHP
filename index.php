@@ -1,11 +1,14 @@
 <?php
 $page_title = "Главная страница";
+require_once 'layout/config.php';
 require_once 'layout/header.php';
 ?>
 
 <main class="container" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh;">
 
 <?php
+$error = isset($_SESSION['error']) ? $_SESSION['error'] : null;
+unset($_SESSION['error']);
 try {
     $limit = isset($_SESSION['user']) ? "" : "LIMIT 1";
     $query = "SELECT p.*, i.file_name AS image FROM products p 
@@ -78,7 +81,7 @@ try {
     }
 }
 catch(Exception $e) {
-    echo "<div class='error'>Ошибка: " . $e->getMessage() . "</div>";
+    echo "<div class='error'>" . $e->getMessage() . "</div>";
 }
 
 require_once 'layout/footer.php';

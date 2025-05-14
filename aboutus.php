@@ -33,7 +33,7 @@ $result = $mysqli->query($query);
                         <img src="images/<?= htmlspecialchars($row['image']) ?>" 
                              alt="<?= htmlspecialchars($row['title']) ?>" 
                              loading="lazy" 
-                             style="width: 100%; height: 360px;"
+                             style="width: 330px; height: 330px;"
                              onerror="this.onerror=null; this.src='cart/DefaultPicture.png';">
                         <h3><?= htmlspecialchars($row['title']) ?></h3>
                         <div class="price"><?= number_format($row['price'], 2) ?> ₽</div>
