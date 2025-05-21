@@ -3,12 +3,9 @@ session_start();
 require_once '../layout/config.php';
 $page_title = "Управление заказами";
 require_once '../layout/header.php';
+requireAdmin();
 
-// Проверяем, является ли пользователь администратором
-if ($_SESSION['user']['role'] !== 'admin') {
-    header('Location: ../index.php');
-    exit();
-}
+
 
 // Получаем список заказов
 $result = $mysqli->query("SELECT o.*, u.login AS user_login FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.order_date DESC");
@@ -38,6 +35,7 @@ $result = $mysqli->query("SELECT o.*, u.login AS user_login FROM orders o JOIN u
                     <td><?= htmlspecialchars($order['status']) ?></td>
                     <td>
                         <form method="POST" action="updateOrderStatus.php">
+                            <input type="hidden" name="csrf_token" value="<?= generateCsrfToken() ?>">
                             <input type="hidden" name="order_id" value="<?= $order['id'] ?>">
                             <select name="status">
                                 <option value="В обработке" <?= $order['status'] === 'В обработке' ? 'selected' : '' ?>>В обработке</option>

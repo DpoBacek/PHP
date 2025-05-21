@@ -7,6 +7,10 @@ $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
+        // Валидация CSRF-токена
+        if (!validateCsrfToken($_POST['csrf_token'])) {
+            throw new Exception("Недействительный CSRF-токен");
+        }
         // Валидация данных
         $name = trim($_POST['name']);
         $surname = trim($_POST['surname']);
@@ -94,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <form method="POST" class="registration-form">
+            <input type="hidden" name="csrf_token" value="<?= generateCsrfToken() ?>">
             <div class="form-grid">
                 <div class="form-group">
                     <label>Имя *</label>

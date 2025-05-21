@@ -26,64 +26,6 @@ $mysqli->close();
 <head>
     <title>Профиль</title>
     <meta charset="utf-8">
-    <style>
-        .profile-container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .profile-container h2 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-
-        .profile-container table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        .profile-container table th,
-        .profile-container table td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .profile-container table th {
-            background-color: #f8f9fa;
-            color: #34495e;
-            font-weight: bold;
-        }
-
-        .profile-container .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 5px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .profile-container .btn:hover {
-            background: #0056b3;
-        }
-
-        .profile-container .btn-d {
-            background: #dc3545;
-        }
-
-        .profile-container .btn-d:hover {
-            background: #a71d2a;
-        }
-    </style>
 </head>
 
 <body>

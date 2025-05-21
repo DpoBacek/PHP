@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once '../layout/config.php';
+requireAdmin();
+
 
 // Проверяем, является ли пользователь администратором
 if ($_SESSION['user']['role'] !== 'admin') {
@@ -10,6 +12,11 @@ if ($_SESSION['user']['role'] !== 'admin') {
 
 // Проверяем, был ли отправлен POST-запрос
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Валидация CSRF-токена
+        if (!validateCsrfToken($_POST['csrf_token'])) {
+            throw new Exception("Недействительный CSRF-токен");
+        }
+
     $order_id = intval($_POST['order_id']);
     $status = $_POST['status'];
 

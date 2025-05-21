@@ -1,5 +1,6 @@
 <?php
 require_once '../layout/config.php';
+requireAdmin();
 ?>
 <!DOCTYPE html>
 <html lang="ru">
